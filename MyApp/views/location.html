@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-gmaps-latlon-picker.css" />
+
+</head>
+
+<body>
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#location" data-toggle="tab" aria-expanded="true">Add Location</a></li>
+		<li class=""><a href="#sloc" data-toggle="tab" aria-expanded="false">Search</a></li>
+	</ul>
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane fade active in" id="location">
+			<form action="/location/add" id="locform" method="POST">
+				<div class="form-group">
+					<label class="control-label" for="categ">Category:</label>
+					<select class="form-control" name="category" id="categ">
+                        <option>Restaurant</option>
+                        <option>Motel</option>
+                    </select>
+				</div>
+				<div class="form-group">
+					<label for="locname" class="control-label">Name:</label>
+					<input type="text" name="name" class="form-control" id="locname">
+				</div>
+				<fieldset class="gllpLatlonPicker">
+					<label for="loctext">Location:</label>
+					<input type="text" id="loctext" class="gllpSearchField">
+					<input type="button" class="btn btn-success gllpSearchButton" value="search">
+					<div class="gllpMap">Google Maps</div>
+					<input type="hidden" id="lat" class="gllpLatitude" value="41.0136852" />
+					<input type="hidden" id="long" class="gllpLongitude" value="-91.95915409999999" />
+					<input type="hidden" class="gllpZoom" value="11" />
+				</fieldset>
+				<p style="padding:5px"></p>
+				<button type="button" id="addloc" class="btn btn-success">Add Location</button>
+			</form>
+		</div>
+		<div class="tab-pane fade" id="sloc">
+			<div class="container">
+				<div class="form-group">
+					<label class="col-sm-1 control-label" for="searchcateg">Select Category:</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="searchcateg">
+                        <option>Restaurant</option>
+                        <option>Motel</option>
+                    </select>
+					</div>
+					<button type="button" class="col-sm-1 btn btn-success" id="btnsearch">Search</button>
+				</div>
+			</div>
+			<p style="padding:10px"></p>
+			<table class="table table-striped table-hovered">
+				<thead>
+					<tr>
+						<th>Nearest 3 locations</th>
+					</tr>
+				</thead>
+				<tbody id="nloc">
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script src="/javascripts/jquery-3.1.1.min.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="/javascripts/jquery-gmaps-latlon-picker.js"></script>
+	<script src="/javascripts/location.js"></script>
+
+</body>
+
+</html>
